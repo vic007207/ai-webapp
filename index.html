@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+        <script>
+            $( document ).ready(function() {
+
+                $("#submit-button").click(function(){
+                     $.ajax({
+                        url: "brain.php",
+                        type: "POST",
+                        data:  {number: $("#number").val()},
+                        datatype: 'html',
+                        success: function(data) {
+                                    $("#results").html(data);
+                                }
+                        });
+                });
+
+                document.getElementById('email-signup').addEventListener('keypress', function(event) {
+                if (event.keyCode == 13) {
+                event.preventDefault();
+                    }
+                });
+
+                });
+        </script>
+    </head>
+    <body>
+        <div id="landing">
+            <div id="email-signup">
+                    <form method="post" id="input-number">
+                        Number: <input type="text" name="number" id="number">
+                        <input type="button" value="Enter" id="submit-button"><br>
+                    </form>
+                </div>
+                <section>
+                </section>
+        </div>
+        <div id="results">
+            Guess a number.
+        </div>
+        <div id="more-info">
+        </div>
+    </body>
+</html>
